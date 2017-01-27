@@ -1,5 +1,6 @@
 console.log('users controller');
 var bcrypt = require('bcryptjs');
+var jwt = require("jsonwebtoken");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
@@ -44,10 +45,14 @@ module.exports = (function () {
 				else {
 					console.log("User found. Start to check password");
 					bcrypt.compare(req.body.password, result.password, function(err, match) {
+						console.log("MATCH?", match);
 						if (match) {
 							console.log("Successfully logged in");
 							console.log(result);
-							res.json({user: result.name, email: result.email, _id: result._id});
+							var token = jwt.sign({user: result.name, email: result.email, _id: result._id}, 'super secret');
+							// res.json({user: result.name, email: result.email, _id: result._id});
+							console.log("TOKEN", token);
+							res.json({token: token, user: result.name, email: result.email, _id: result._id});
 						}
 						else {
 							console.log("Wrong password...");

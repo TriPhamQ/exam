@@ -10,8 +10,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script> -->
         <script src="angular/angular.min.js" charset="utf-8"></script>
         <script src="angular-route/angular-route.min.js" charset="utf-8"></script>
+		<script src="angular-cookies/angular-cookies.js" charset="utf-8"></script>
         <script src="routes.js" charset="utf-8"></script>
 		<script src="assets/app.js" charset="utf-8"></script>
+		<script src="assets/controllers/run.js" charset="utf-8"></script>
         <script src="assets/controllers/logregController.js" charset="utf-8"></script>
         <script src="assets/factories/usersFactory.js" charset="utf-8"></script>
 	</head>
@@ -31,7 +33,7 @@
 				</nav>
 			</div>
             <div class="row">
-                <h3>Welcome to my belt exam!</h3>
+                <h3>Welcome {{currentuser}} to my belt exam!</h3>
             </div>
             <div class="" ng-view="">
 

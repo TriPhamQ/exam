@@ -1,4 +1,4 @@
-myApp.controller('logregController', ['$scope', 'usersFactory', '$location', function ($scope, usersFactory, $location) {
+myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$rootScope', '$cookies', function ($scope, usersFactory, $location, $rootScope, $cookies) {
     console.log('logregController loaded');
 	$scope.error = undefined;
 
@@ -10,9 +10,10 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', fun
                 if (!output.data.error) {
                     console.log("NO ERROR", output.data);
                     usersFactory.login({email: $scope.newUser.email, password: $scope.newUser.password}, function (output) {
+                        console.log(output);
                         if (!output.data.error) {
-            			    console.log("SUCCESS, USER IS", output.data._id);
-                            $location.url('/'+output.data._id+'/dashboard');
+            			    // console.log("SUCCESS, USER IS", output.data._id);
+                            // $location.url('/'+output.data._id+'/dashboard');
             			}
                         else {
                             console.log("ERROR IS", output.data.error);
@@ -31,8 +32,9 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', fun
 		console.log($scope.login);
 		usersFactory.login($scope.login, function (output) {
 			if (!output.data.error) {
-			    console.log("SUCCESS, USER IS", output.data._id);
-                $location.url('/'+output.data._id+'/dashboard');
+                // console.log(output.data);
+			    // console.log("SUCCESS, USER IS", output.data._id);
+                // $location.url('/'+output.data._id+'/dashboard');
 			}
             else {
                 console.log("ERROR IS", output.data.error);
@@ -40,4 +42,15 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', fun
             $scope.login = {};
 		});
 	};
+
+    $scope.logOut = function () {
+        $cookies.remove('token');
+        $cookies.remove('currentuser');
+        $cookies.remove('currentuser_id');
+        $rootScope.token = null;
+        $rootScope.currentuser = null;
+        $rootScope.currentuser_id = null;
+    };
+
+    console.log("ROOT USER IS", $rootScope.currentuser);
 }]);

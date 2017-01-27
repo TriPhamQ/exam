@@ -1,6 +1,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var jwt = require("jsonwebtoken");
 var path = require("path");
 var port = 9000;
 
