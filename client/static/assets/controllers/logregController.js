@@ -13,7 +13,7 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
                         console.log(output);
                         if (!output.data.error) {
             			    // console.log("SUCCESS, USER IS", output.data._id);
-                            // $location.url('/'+output.data._id+'/dashboard');
+                            $location.url('/dashboard');
             			}
                         else {
                             console.log("ERROR IS", output.data.error);
