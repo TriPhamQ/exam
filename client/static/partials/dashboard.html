@@ -1,3 +1,44 @@
 <div class="row">
-    <h2>This is a partial</h2>
+    <div class="col s4">
+
+    </div>
+    <div class="col s4">
+        <div class="row">
+            <div class="col offset-s2">
+                <a class="btn waves-effect waves-light" href="#!/lets-play">Play!</a>
+            </div>
+        </div>
+        <div class="row">
+            <p>Click the button above to start the trivia game</p>
+        </div>
+    </div>
+    <div class="col s4">
+
+    </div>
+</div>
+<div class="row">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td ng-bind="user.name"></td>
+                <td ng-if="user.win && user.lost" ng-bind-template="{{user.win}}/{{user.lost+user.win}}"></td>
+                <td ng-if="!user.win && !user.lost">Noob</td>
+                <td ng-if="user.win && user.lost" ng-bind-template="{{user.win/(user.lost+user.win)*100 | number: 2}}%"></td>
+                <td ng-if="!user.win && !user.lost">Noob</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row" ng-hide="!token">
+	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
+</div>
+<div class="row" ng-show="!token">
+	<a class="btn waves-effect waves-light" href="#!/">Log In</a>
 </div>

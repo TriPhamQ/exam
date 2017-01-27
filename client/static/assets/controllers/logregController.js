@@ -34,7 +34,7 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
 			if (!output.data.error) {
                 // console.log(output.data);
 			    // console.log("SUCCESS, USER IS", output.data._id);
-                // $location.url('/'+output.data._id+'/dashboard');
+                $location.url('/dashboard');
 			}
             else {
                 console.log("ERROR IS", output.data.error);
@@ -50,6 +50,7 @@ myApp.controller('logregController', ['$scope', 'usersFactory', '$location', '$r
         $rootScope.token = null;
         $rootScope.currentuser = null;
         $rootScope.currentuser_id = null;
+        $location.url('/');
     };
 
     console.log("ROOT USER IS", $rootScope.currentuser);

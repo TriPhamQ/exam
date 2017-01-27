@@ -4,4 +4,8 @@ myApp.run(function ($rootScope, $cookies) {
         $rootScope.currentuser = $cookies.get('currentuser');
         $rootScope.currentuser_id = $cookies.get('currentuser_id');
     };
+    
+    if (!$rootScope.triviaID) {
+        $rootScope.triviaID = 1;
+    };
 });

@@ -61,6 +61,41 @@ module.exports = (function () {
 					});
 				};
 			});
+		},
+		getall: function (req, res) {
+			console.log("Getting all users");
+			User.find({}, function (err, results) {
+				if (err) {
+					console.log("Error when getting all users in db...");
+				}
+				else {
+					console.log("Got all the users");
+					res.json(results);
+				}
+			})
+		},
+		update: function (req, res) {
+			console.log("About to update score");
+			console.log(req.body);
+			User.findOne({_id: req.body.userid}, function (err, result) {
+				console.log("found", result);
+				if (!result.win) {
+					result.win = req.body.win;
+				}
+				else {
+					result.win = result.win+req.body.win;
+				};
+				if (!result.lost) {
+					result.lost = req.body.lost;
+				}
+				else {
+					result.lost = result.lost+req.body.lost;
+				};
+				result.save();
+				console.log(result.win);
+				console.log(result.lost);
+				res.json(result);
+			})
 		}
 	}
 })();

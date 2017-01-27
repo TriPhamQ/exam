@@ -6,9 +6,17 @@ myApp.config(function ($routeProvider) {
 		templateUrl: 'partials/logreg.html',
 		controller: 'logregController'
 	})
-	.when('/:id/dashboard', {
+	.when('/dashboard', {
 		templateUrl: 'partials/dashboard.html',
-		controller: ''
+		controller: 'dashboardController'
+	})
+	.when('/new-question', {
+		templateUrl: 'partials/new_question.html',
+		controller: 'triviasController'
+	})
+	.when('/lets-play', {
+		templateUrl: 'partials/lets_play.html',
+		controller: 'playController'
 	})
 	.otherwise({
 		redirectTo: '/'

@@ -1,0 +1,23 @@
+<div class="row">
+	<p>Add New Question</p>
+	<div class="input-field col s12">
+		<textarea id="textarea1" class="materialize-textarea" ng-model="newTrivia.question"></textarea>
+		<label for="textarea1">Question</label>
+	</div>
+	<div class="input-field col s12">
+		<input type="text" name="" value="" placeholder="Correct Answer" ng-model="newTrivia.answer1">
+	</div>
+	<div class="input-field col s12">
+		<input type="text" name="" value="" placeholder="Fake Answer 1" ng-model="newTrivia.answer2">
+	</div>
+	<div class="input-field col s12">
+		<input type="text" name="" value="" placeholder="Fake Answer 2" ng-model="newTrivia.answer3">
+	</div>
+	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="new()">Submit Question</button>
+</div>
+<div class="row" ng-hide="!token">
+	<button class="btn waves-effect waves-light" type="button" name="button" ng-click="logOut()">Log Out</button>
+</div>
+<div class="row" ng-show="!token">
+	<a class="btn waves-effect waves-light" href="#!/">Log In</a>
+</div>

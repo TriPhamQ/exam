@@ -21,6 +21,12 @@ var UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		minlength: 8
+	},
+	win: {
+		type: Number
+	},
+	lost:{
+		type: Number
 	}
 }, {timestamps: true});
 
